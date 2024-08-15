@@ -1,2 +1,2 @@
-# dpm-ml
-A Disease Prediction Model Using Machine Learning
+# Disease Prediction Model
+A Web-based Disease Prediction Model using Machine Learning.
