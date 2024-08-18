@@ -1,5 +1,5 @@
 """
-Executable code to generate a heatmap visualizing the relationship 
+Script code to generate a heatmap visualizing the relationship 
 between symptoms and prognosis from a dataset.
 """
 
@@ -32,6 +32,4 @@ plt.xticks(fontsize=8)
 
 # Adjust the layout to ensure proper spacing and prevent overlap
 plt.tight_layout()
-
-# Display the heatmap
 plt.show()
