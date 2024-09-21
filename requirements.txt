@@ -1,3 +1,7 @@
+joblib==1.4.2
 matplotlib==3.9.2
-pandas==2.2.2
+numpy==2.1.1
+pandas==2.2.3
+scikit_learn==1.5.2
 seaborn==0.13.2
+setuptools==72.2.0

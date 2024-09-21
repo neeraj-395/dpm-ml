@@ -8,7 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load the data from the correct file
-data = pd.read_csv('../dataset/traning.csv')
+data = pd.read_csv('data/training.csv')
 
 # Count the occurrences of each unique 'prognosis'
 prognosis_counts = data['prognosis'].value_counts().reset_index()

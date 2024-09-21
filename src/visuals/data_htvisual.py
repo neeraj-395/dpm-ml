@@ -12,7 +12,7 @@ NUM_SYMPTOMS = 20
 NUM_PROGNOSIS = 20
 
 # Load the dataset and separate the 'prognosis' column
-data = pd.read_csv('../dataset/testing.csv')
+data = pd.read_csv('data/testing.csv')
 
 # Extract the first 'n' prognosis labels
 prognosis = data.pop('prognosis').head(NUM_PROGNOSIS)
