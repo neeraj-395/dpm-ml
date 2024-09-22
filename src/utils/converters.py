@@ -1,3 +1,7 @@
+"""
+Module for Disease Dataset Convertion and Manipulation
+"""
+
 import numpy as np
 
 def symptoms_to_vector(user_symptoms: list[str], all_symptoms: list[str]) -> np.ndarray:
