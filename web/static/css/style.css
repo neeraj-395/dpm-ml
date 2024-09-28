@@ -1,0 +1,166 @@
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body Styles */
+    .main-screen {
+        background-color: #fefae0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Main Card */
+    .main-card {
+        width: 85vw;
+        padding: 2%;
+        background-color: #f5ebe0;
+        border-radius: 50px;
+        box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.5s ease-in-out;
+    }
+
+    .main-card:hover {
+        box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Main Content */
+    .main-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
+    }
+
+    /* Logo Row */
+    .logo-row {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+
+    /* Intro Section (Left Side) */
+    .intro-section {
+        display: flex;
+        flex-direction: column;
+        margin-right: 2%;
+        width: 45%; /* Adjust width for balance with the input section */
+    }
+
+    .model-name {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .model-intro {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        text-align: start;
+    }
+
+    /* Icon Styling */
+    .logo {
+        margin: 20px 0;
+    }
+
+    .logo i {
+        margin-right: 15px;
+        font-size: 1.5rem;
+        color: #444;
+        transition: color 0.3s ease, font-size 0.3s ease;
+    }
+
+    .logo i:hover {
+        font-size: 1.7rem;
+        color: #000000;
+    }
+
+    /* Input Section (Right Side) */
+    .model-input {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .model-input input {
+        width: 80%;
+        padding: 12px;
+        font-size: 1.1rem;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .model-input input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Symptom Section */
+    .symptoms-section {
+        margin-top: 20px;
+        width: 80%; /* Ensures alignment with input */
+    }
+
+    .symptom-tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    /* Tag Styles */
+/* Tag Styles */
+.tag {
+    display: inline-flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #ddd;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 1rem; /* Adjust font size */
+}
+
+/* Close Button Styles */
+.close-btn {
+    background: none;
+    border: none;
+    color: #777777d0; /* Red color for close button */
+    font-size: 1.3rem; /* Size of the close button */
+    font-weight: bolder;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000000; /* Darker red on hover */
+    font-size: 1.4rem; /* Size of the close button */
+    margin-left: 12px;
+}
+
+/* Animation for Tag Removal */
+@keyframes whoops {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
