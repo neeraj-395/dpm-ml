@@ -46,10 +46,10 @@ class DiseasePredictModel():
         Returns True if everything is loaded; otherwise, False.
         """
         if not self.__dt_model or not self.__rf_model:
-            print("(dp_module) [Error 0]: Models are not loaded properly.")
+            print("(dp_module) [Error -1]: Models are not loaded properly.")
             return False
         if not self.__symptoms or not self.__diseases:
-            print("(dp_module) [Error 0]: Data labels are not loaded properly.")
+            print("(dp_module) [Error -1]: Data labels are not loaded properly.")
             return False
         return True
 
@@ -69,7 +69,7 @@ class DiseasePredictModel():
 
     def get_diseases(self) -> list[str]:
         """
-        Return a list of symptom names
+        Return a list of disease names
         """
         return self.__diseases.copy()
 
@@ -82,8 +82,8 @@ class DiseasePredictModel():
             return None
 
         x_pred = self.__symptoms_to_df(symptoms_names)
-        dt_pred = self.__dt_model.predict(x_pred) # type: ignore
-        rf_pred = self.__rf_model.predict(x_pred) # type: ignore
+        dt_pred = self.__dt_model.predict(x_pred) # type:ignore
+        rf_pred = self.__rf_model.predict(x_pred) # type:ignore
         return stats.mode([dt_pred, rf_pred])[0][0]
 
     def predict_proba(self, symptoms_names: list[str]) -> list[float] | None:
