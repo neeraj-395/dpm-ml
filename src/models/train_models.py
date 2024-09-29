@@ -13,7 +13,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-from src.models.preprocess import data_preprocessor
+from src.utils.preprocess import data_preprocessor
 
 def __evaluate_model(y_true, y_pred):
     """

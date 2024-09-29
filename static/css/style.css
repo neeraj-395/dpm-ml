@@ -1,13 +1,9 @@
     /* General Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     /* Body Styles */
     .main-screen {
-        background-color: #fefae0;
+        background-color: whitesmoke;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -16,16 +12,16 @@
 
     /* Main Card */
     .main-card {
-        width: 85vw;
+        width: 80vw;
         padding: 2%;
-        background-color: #f5ebe0;
-        border-radius: 50px;
-        box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 10px 10px 15px;
         transition: box-shadow 0.5s ease-in-out;
     }
 
     .main-card:hover {
-        box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+        box-shadow: 2px 2px 20px;
     }
 
     /* Main Content */
@@ -33,7 +29,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
+        flex-wrap: wrap;
     }
 
     /* Logo Row */
@@ -48,13 +44,14 @@
         display: flex;
         flex-direction: column;
         margin-right: 2%;
-        width: 45%; /* Adjust width for balance with the input section */
+        width: 45%;
     }
 
     .model-name {
         font-size: 2rem;
         margin-bottom: 1rem;
         color: #333;
+        font-weight: bold;
     }
 
     .model-intro {
@@ -72,12 +69,10 @@
         margin-right: 15px;
         font-size: 1.5rem;
         color: #444;
-        transition: color 0.3s ease, font-size 0.3s ease;
     }
 
     .logo i:hover {
-        font-size: 1.7rem;
-        color: #000000;
+        color: black;
     }
 
     /* Input Section (Right Side) */
@@ -98,16 +93,17 @@
         margin-bottom: 15px;
     }
 
-    .model-input input:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+    .model-input select {
+        padding: 12px;
+        border: 2px solid #ccc;
+        font-size: 1.1rem;
+        border-radius: 10px;
     }
 
     /* Symptom Section */
     .symptoms-section {
         margin-top: 20px;
-        width: 80%; /* Ensures alignment with input */
+        width: 80%;
     }
 
     .symptom-tags {
@@ -116,51 +112,3 @@
         flex-wrap: wrap;
         margin-bottom: 15px;
     }
-
-    /* Tag Styles */
-/* Tag Styles */
-.tag {
-    display: inline-flex;
-    align-items: center;
-    margin: 5px;
-    padding: 5px 10px;
-    background-color: #ddd;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    font-size: 1rem; /* Adjust font size */
-}
-
-/* Close Button Styles */
-.close-btn {
-    background: none;
-    border: none;
-    color: #777777d0; /* Red color for close button */
-    font-size: 1.3rem; /* Size of the close button */
-    font-weight: bolder;
-    margin-left: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.close-btn:hover {
-    color: #000000; /* Darker red on hover */
-    font-size: 1.4rem; /* Size of the close button */
-    margin-left: 12px;
-}
-
-/* Animation for Tag Removal */
-@keyframes whoops {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.2);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-

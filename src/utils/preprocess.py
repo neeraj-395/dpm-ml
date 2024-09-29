@@ -21,3 +21,5 @@ def data_preprocessor(csv_file_path: str) -> tuple[pd.DataFrame, pd.Series]:
     symptoms = df.columns[:-1].tolist()
 
     return df[symptoms], df['prognosis']
+
+
