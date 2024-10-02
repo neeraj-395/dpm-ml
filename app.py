@@ -4,7 +4,7 @@ from src.models.dp_model import DiseasePredictModel
 
 app = Flask(__name__)
 
-wiki = Wikipedia('DPM_ML_PROJECT')
+wiki = Wikipedia('DPM-ML')
 dpm = DiseasePredictModel()
 symptoms = dpm.get_symptoms()
 diseases = dpm.get_diseases()

@@ -44,7 +44,7 @@ build:
 	$(MAKE) train
 
 update-reqs:
-	pipreqs . --force --ignore .venv,.vscode --clean requirements.txt
+	pipreqs . --force --ignore .venv
 
 train:
 	@echo "Training prediction models..."
