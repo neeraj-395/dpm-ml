@@ -7,58 +7,52 @@
     <title>Disease Prediction Model</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="icon" type="image/x-icon" href="../static/img/medical-robot.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body class="main-screen">
-    <div class="main-card">
-        <div class="logo-row">
-            <div class="nav-logo">
-                <img src="../static/img/medical-robot.png" alt="Web Logo" style="height: 50px; width: auto;">
-            </div>
+<body>
+    <main class="main-card">
+        <div class="main-logo">
+            <img src="../static/img/medical-robot.png" alt="Medical Robot">
         </div>
         <div class="main-content">
-            <!-- Left Section -->
-            <div class="intro-section">
-                <h1 class="model-name">Disease Prediction Model</h1>
-                <p class="model-intro">
-                    Our disease prediction tool uses machine learning algorithms like Decision Tree and Random Forest to help users identify potential health conditions based on symptoms. 
-                    The platform is user-friendly, allowing quick insights through a simple web interface built with Flask.
-                </p>
-                <p class="model-intro">
-                    This tool is for educational purposes only and is not intended for actual medical diagnoses or advice.
-                </p>                
-                <div class="logo">
-                    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.github.com/neeraj-395/dpm-ml" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <section class="intro-section">
+                <h1 class="intro-heading">Disease Prediction Model</h1>
+                <article class="intro-paragraphs">
+                    <p>Our disease prediction tool uses machine learning algorithms like Decision Tree and Random Forest
+                        to help users identify potential health conditions based on symptoms.</p>
+                    <p>The platform is user-friendly, allowing quick insights through a simple web interface built with
+                        Flask.</p>
+                    <p>This tool is for educational purposes only and is not intended for actual medical diagnoses or
+                        advice.</p>
+                </article>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/dseu_official" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.x.com/dseu_official" target="_blank" aria-label="X-twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.github.com/neeraj-395/dpm-ml" target="_blank" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
-            </div>
+            </section>
 
-            <!-- Right Section -->
-            <form class="model-input" action="/predict" method="post">
+            <form class="input-section" action="/predict" method="post">
                 <input class="form-control" type="text" name="username" placeholder="Your Name..." required>
-                <div class="symptoms-section">
-                    <p>What are your symptoms?</p>
-                    <select class="form-select" name="symptoms"> 
-                        <option disabled selected>Add a symptom...</option>
-                        {% for name in symp_names %} <!-- Flask Template -->
-                            <option value="{{ name }}">{{ name.replace('_',' ').capitalize() }}</option>
-                        {% endfor %} <!-- Flask Template End-->
+                <div class="symptom-select">
+                    <label for="symptoms">What are your symptoms?</label>
+                    <select id="symptoms" class="form-select" name="symptoms">
+                        <option disabled selected>Add symptoms...</option>
+                        {% for name in symp_names %}
+                        <option value="{{ name }}">{{ name.replace('_',' ').capitalize() }}</option>
+                        {% endfor %}
                     </select>
                 </div>
-                <button type="submit" style="font-size: 1.1rem; padding-inline:20px;" 
-                class="btn btn-primary mt-4 rounded-pill">Predict</button>
+                <button type="submit" class="btn btn-primary rounded-pill">Predict</button>
             </form>
         </div>
-    </div>
-
-    <script src="../static/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </main>
 </body>
 
 </html>
