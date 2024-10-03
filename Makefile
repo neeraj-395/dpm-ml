@@ -21,7 +21,6 @@ help:
 	@echo "Please use one of the following options:"
 	@echo "  make venv               - Make a virtual environment for python project"
 	@echo "  make build              - Setup project, install dependencies, train models."
-	@echo "  make update-reqs        - Update requirements.txt using pipreqs."
 	@echo "  make serve              - Serve the site without running tests."
 	@echo "  make train              - Train the models using train_models script."
 	@echo "  make test               - Run all tests in the application."
@@ -43,9 +42,6 @@ build:
 	$(PIP) install -r requirements.txt
 	$(MAKE) train
 
-update-reqs:
-	pipreqs . --force --ignore .venv
-
 train:
 	@echo "Training prediction models..."
 	$(PYTHON) $(TRAIN_SCRIPT)
@@ -63,4 +59,4 @@ clean:
 	echo "Cleaning untracked files..."
 	git clean -d -f -X
 
-.PHONY: venv build update-reqs serve train test clean
+.PHONY: venv build serve train test clean
