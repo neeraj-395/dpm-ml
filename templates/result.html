@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disease Prediction Model</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/result.css">
 </head>
 
 <body>
     <div class="main-card">
-        <div style="float: left; width: 70%;">
-            <h1>{{disease_title}}</h1>
-            <p>{{disease_desc}}</p>
+        <div class="" style="float: left; width: 70%;">
+            <h1>{{d_name}}</h1>
+            <p>{{d_summary}}</p>
         </div>
         <div class="img-card">
-            <img class="content-img" src="../static/img/medical-robot.png">
+            <img class="content-img" src="{{d_image_link}}">
         </div>
     </div>
 </body>

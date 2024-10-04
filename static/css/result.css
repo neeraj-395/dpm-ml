@@ -1,0 +1,12 @@
+@import url('./common.css');
+
+.img-card {
+    float:right;
+    max-width: 20%;
+    padding: 2%;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.img-card img { height: 100%; width: 100%; border-radius: 30px; }
