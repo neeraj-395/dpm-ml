@@ -19,11 +19,11 @@ class DiseasePredictModel():
 
     def __load_config(self) -> dict:
         try:
-            with open('config.yaml', 'r') as file:
+            with open('config.yaml', 'r', encoding='utf-8') as file:
                 return yaml.safe_load(file)
         except OSError as e:
             print("(dp_module)", e)
-            return dict()
+            return {}
 
     def __load_models(self):
         try:
@@ -41,11 +41,11 @@ class DiseasePredictModel():
     def __load_labels(self) -> tuple[tuple[str], tuple[str]]:
         try:
             df = pd.read_csv(self.__config['metadata']['labels'])
-            return tuple(df['symptoms'].tolist()), tuple(df['diseases'].tolist())
+            return tuple(df['symptom_name'].tolist()), tuple(df['disease_name'].tolist())
         except FileNotFoundError as e:
             print("(dp_module)", e)
         except KeyError as e:
-            print(f"(dp_model) Unknown config key: {e}")
+            print(f"(dp_model) Unknown label key: {e}")
         return tuple(), tuple()
 
     def __validate_models(self) -> bool:
@@ -71,10 +71,12 @@ class DiseasePredictModel():
 
     @property
     def symptoms(self) -> tuple[str]:
+        """Symptom labels tuple read-only."""
         return self.__symptoms
 
     @property
     def diseases(self) -> tuple[str]:
+        """Disease labels tuple read-only."""
         return self.__diseases
 
     def predict(self, symptoms_names: list[str]) -> int | None:
@@ -104,5 +106,4 @@ class DiseasePredictModel():
 
 if __name__ == "__main__":
     dpm = DiseasePredictModel()
-    print(dpm.symptoms)
-    # print(dpm.predict_proba(['itching', 'skin_rash', 'chills']))
+    print(dpm.predict_proba(['itching', 'skin_rash', 'chills']))

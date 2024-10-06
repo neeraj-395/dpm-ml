@@ -5,17 +5,17 @@
 
 body {
     display: flex;
-    padding: 2rem;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
     align-items: center;
     justify-content: center;
     background-color: whitesmoke !important;
 }
 
 .main-card {
-    max-height: 100%;
-    overflow-y: auto;
     width: 80vw;
     padding: 2%;
+    overflow-y: auto;
     border-radius: 30px;
     background-color: white;
     box-shadow: 10px 10px 15px;

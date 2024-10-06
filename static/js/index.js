@@ -1,6 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-})
-
 document.addEventListener('DOMContentLoaded', () => {
     const symptomSelect = document.getElementById('symptoms');
     const dropdownContainer = document.createElement('div');

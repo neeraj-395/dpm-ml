@@ -16,7 +16,7 @@ class DiseaseInfo():
     def __load_dataset(self) -> pd.DataFrame | None:
         """Load the disease information dataset from the specified path."""
         try:
-            with open('config.yaml') as file:
+            with open('config.yaml', encoding='utf-8') as file:
                 data_path = yaml.safe_load(file)['metadata']['disease_info']
             return pd.read_csv(data_path).set_index('disease_name')
         except (OSError, FileNotFoundError) as e:
@@ -67,4 +67,3 @@ if __name__ == "__main__":
     print(di.doctor_info('Fungal infection'))
     print(di.precautions('Fungal infection'))
     print(di.image_link('Fungal infection'))
-

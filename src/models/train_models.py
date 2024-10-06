@@ -7,9 +7,10 @@ disease prediction. It evaluates both models on a validation set and
 optionally saves the trained models as `.pkl` files for later use.
 """
 
+import argparse
+
 import yaml
 import joblib
-import argparse
 import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
@@ -33,14 +34,11 @@ def train_models(dump_models: bool = True) -> bool:
     evaluates them on a validation set, and optionally saves the trained models.
     """
     try:
-        with open('config.yaml', 'r') as file:
+        with open('config.yaml', 'r', encoding='utf-8') as file:
             config = yaml.safe_load(file)
 
         # Load and preprocess the dataset
         df = pd.read_csv(config['processed']['training'])
-
-        # Convert the 'prognosis' column to categorical codes, extracting unique diseases
-        df['prognosis'], _ = pd.factorize(df['prognosis'])
 
         # Split the dataset into training and validation sets
         x_train, x_val, y_train, y_val = train_test_split(

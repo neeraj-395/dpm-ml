@@ -1,0 +1,81 @@
+.dropdown-container {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 40px;
+    gap: 10px; 
+    margin-bottom: 15px; 
+}
+
+.remove-x {
+    margin-left: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.selected-symptoms-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex-grow: 1;
+    min-height: 40px;
+}
+
+.dropdown-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 16px;
+    margin-left: auto; 
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background-color: #f1f1f1;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin: 3px;
+}
+
+.tag .remove-tag {
+    margin-left: 5px;
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-i,symptoms,diseases
+i,symptom_name,disease_name
 0,itching,Fungal infection
 1,skin_rash,Allergy
 2,nodal_skin_eruptions,GERD
@@ -12,7 +12,7 @@ i,symptoms,diseases
 10,muscle_wasting,Hypertension
 11,vomiting,Migraine
 12,burning_micturition,Cervical spondylosis
-13,spotting_ urination,Paralysis (brain hemorrhage)
+13,spotting_urination,Paralysis (brain hemorrhage)
 14,fatigue,Jaundice
 15,weight_gain,Malaria
 16,anxiety,Chicken pox
@@ -101,7 +101,7 @@ i,symptoms,diseases
 99,red_spots_over_body,
 100,belly_pain,
 101,abnormal_menstruation,
-102,dischromic _patches,
+102,dischromic_patches,
 103,watering_from_eyes,
 104,increased_appetite,
 105,polyuria,
@@ -116,18 +116,17 @@ i,symptoms,diseases
 114,stomach_bleeding,
 115,distention_of_abdomen,
 116,history_of_alcohol_consumption,
-117,fluid_overload.1,
-118,blood_in_sputum,
-119,prominent_veins_on_calf,
-120,palpitations,
-121,painful_walking,
-122,pus_filled_pimples,
-123,blackheads,
-124,scurring,
-125,skin_peeling,
-126,silver_like_dusting,
-127,small_dents_in_nails,
-128,inflammatory_nails,
-129,blister,
-130,red_sore_around_nose,
-131,yellow_crust_ooze,
+117,blood_in_sputum,
+118,prominent_veins_on_calf,
+119,palpitations,
+120,painful_walking,
+121,pus_filled_pimples,
+122,blackheads,
+123,scurring,
+124,skin_peeling,
+125,silver_like_dusting,
+126,small_dents_in_nails,
+127,inflammatory_nails,
+128,blister,
+129,red_sore_around_nose,
+130,yellow_crust_ooze,

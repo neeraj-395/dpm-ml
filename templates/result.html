@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disease Prediction Model</title>
     <link rel="stylesheet" href="../static/css/result.css">
+    <link rel="icon" type="image/x-icon" href="../static/img/medical-robot.ico">
 </head>
 
 <body>
-    <div class="main-card">
-        <div class="card" style="float: left; height:100%; width: 70%;">
+    <main class="main-card">
+        <div class="main-content">
             <h1>{{d_name}}</h1>
-            <p>{{d_summary}}</p>
+            <p class="disease-summary">{{d_summary}}</p>
         </div>
         <div class="img-card">
             <img class="content-img" src="{{d_image_link}}">
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
