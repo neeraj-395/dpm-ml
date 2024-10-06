@@ -1,0 +1,15 @@
+rawdata:
+  training: "data/raw/training.csv"
+  testing: "data/raw/testing.csv"
+
+processed:
+  training: "data/processed/training.csv"
+  testing: "data/processed/testing.csv"
+
+metadata:
+  disease_info: "data/meta/disease_info.csv"
+  labels: "data/meta/labels.csv"
+
+models:
+  dtm: "models/decision_tree_model.pkl"
+  rfm: "models/random_forest_model.pkl"  

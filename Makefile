@@ -44,7 +44,7 @@ build:
 
 train:
 	@echo "Training prediction models..."
-	$(PYTHON) $(TRAIN_SCRIPT)
+	$(PYTHON) $(TRAIN_SCRIPT) --dump-models
 
 # Serve the app without running tests
 serve:

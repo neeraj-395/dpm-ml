@@ -7,13 +7,14 @@ disease prediction. It evaluates both models on a validation set and
 optionally saves the trained models as `.pkl` files for later use.
 """
 
+import yaml
 import joblib
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
+import argparse
+import pandas as pd
 from sklearn.metrics import accuracy_score
-
-from src.utils.preprocess import data_preprocessor
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
 def __evaluate_model(y_true, y_pred):
     """
@@ -22,22 +23,28 @@ def __evaluate_model(y_true, y_pred):
     """
     norm_accuracy = accuracy_score(y_true, y_pred)
     count_accuracy = accuracy_score(y_true, y_pred, normalize=False)
-    print(f":: Validation Score (normalized): {norm_accuracy}")
-    print(f":: Validation Score (count): {count_accuracy}")
+    print(f"Validation Score (normalized): {norm_accuracy}")
+    print(f"Validation Score (count): {count_accuracy}")
 
 
-def train_models(data_path: str, dump_model: bool = True) -> bool:
+def train_models(dump_models: bool = True) -> bool:
     """
     Trains Decision Tree and Random Forest models on the given dataset, 
     evaluates them on a validation set, and optionally saves the trained models.
     """
     try:
+        with open('config.yaml', 'r') as file:
+            config = yaml.safe_load(file)
+
         # Load and preprocess the dataset
-        x_train, y_train = data_preprocessor(data_path)
+        df = pd.read_csv(config['processed']['training'])
+
+        # Convert the 'prognosis' column to categorical codes, extracting unique diseases
+        df['prognosis'], _ = pd.factorize(df['prognosis'])
 
         # Split the dataset into training and validation sets
         x_train, x_val, y_train, y_val = train_test_split(
-            x_train, y_train, test_size=0.2, random_state=42
+            df[df.columns[:-1]], df['prognosis'], test_size=0.2, random_state=42
         )
 
         # Initialize the models
@@ -49,26 +56,29 @@ def train_models(data_path: str, dump_model: bool = True) -> bool:
         rfc.fit(x_train, y_train)
 
         # Evaluate the models
-        print("\n:: Decision Tree Model ::")
+        print("\nDecision Tree Model:")
         y_pred = dtc.predict(x_val)
         __evaluate_model(y_val, y_pred)
 
-        print("\n:: Random Forest Model ::")
+        print("\nRandom Forest Model:")
         y_pred = rfc.predict(x_val)
         __evaluate_model(y_val, y_pred)
 
         # Save the models to disk if required
-        if dump_model:
-            joblib.dump(dtc, 'models/decision_tree_model.pkl')
-            print('\n:: Decision tree model saved to /models directory.')
-            joblib.dump(rfc, 'models/random_forest_model.pkl')
-            print(':: Random forest model saved to /models directory.')
+        if dump_models:
+            joblib.dump(dtc, config['models']['dtm'])
+            print('\nDecision tree model saved to /models directory.')
+            joblib.dump(rfc, config['models']['rfm'])
+            print('Random forest model saved to /models directory.')
 
         return True
 
-    except (FileNotFoundError, ValueError) as e:
+    except (FileNotFoundError, ValueError, KeyError) as e:
         print("(train_models)", e)
         return False
 
 if __name__ == "__main__":
-    train_models('data/training.csv', dump_model=False)
+    parser = argparse.ArgumentParser(description='Train and optionally save the model.')
+    parser.add_argument('--dump-models', action='store_true', help='Save the model after training!')
+
+    train_models(dump_models=parser.parse_args().dump_models)

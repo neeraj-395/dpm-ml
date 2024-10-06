@@ -4,6 +4,7 @@ This module allows retrieval of disease-related information, including precautio
 doctor info, and a short summary fetched from Wikipedia.
 """
 
+import yaml
 import pandas as pd
 from src.utils.wikipedia import wiki_api
 
@@ -15,16 +16,20 @@ class DiseaseInfo():
     def __load_dataset(self) -> pd.DataFrame | None:
         """Load the disease information dataset from the specified path."""
         try:
-            return pd.read_csv('data/disease_info.csv').set_index('disease')
-        except FileNotFoundError as e:
-            print('(dinfo-module)', e)
-            return None
+            with open('config.yaml') as file:
+                data_path = yaml.safe_load(file)['metadata']['disease_info']
+            return pd.read_csv(data_path).set_index('disease_name')
+        except (OSError, FileNotFoundError) as e:
+            print('(dinfo_module)', e)
+        except KeyError as e:
+            print(f'(dinfo_module) Unknown config key: {e}')
+        return None
 
     def __safe_lookup(self, row: str, col: str) -> str | None:
         """Helper method to safely lookup data in the dataset with exception handling."""
         try:
             return self.__dinfo.loc[row, col] # type: ignore
-        except (KeyError, AttributeError):
+        except AttributeError:
             print(f"(dinfo-module)[Error -1]: looking up '{col}' for '{row}'")
             return None
 
@@ -35,12 +40,12 @@ class DiseaseInfo():
 
     def image_link(self, disease_name) -> str | None:
         """Return the image link for the given disease, if available."""
-        return self.__safe_lookup(disease_name, 'image_link')
+        return self.__safe_lookup(disease_name, 'wiki_img')
 
-    def doctor_info(self, disease_name) -> dict[str, str] | None:
+    def doctor_info(self, disease_name) -> dict[str, str | None]:
         """Return a dictionary with doctor info (name, branch, hospital) for the given disease."""
-        info_str = self.__safe_lookup(disease_name, 'doctor_info')
-        return dict(zip(['name', 'branch', 'hospital'], info_str.split(','))) if info_str else None
+        keys = ['doctor_name', 'hospital', 'specialty']
+        return dict(zip(keys, [self.__safe_lookup(disease_name, x) for x in keys]))
 
     def short_summary(self, disease_name: str) -> str | None:
         """Return a short summary of the disease from Wikipedia for the given disease."""
@@ -49,12 +54,17 @@ class DiseaseInfo():
             return None
         try:
             res = wiki_api(pageids=pageid, exintro=True, explaintext=True, exsentences=5)
-            return res['query']['pages'][f'{pageid}']['extract'] # type:ignore
+            if res and res.ok:
+                return res.json()['query']['pages'][f'{pageid}']['extract'] # type:ignore
+            return None
         except (KeyError, TypeError) as e:
             print('(dinfo-module)[Error -1]: Unable to locate', e)
             return None
 
 if __name__ == "__main__":
-    disease_info = DiseaseInfo()
-    summary = disease_info.short_summary('Fungal infection')
-    print(summary)
+    di = DiseaseInfo()
+    print(di.short_summary('Fungal infection'))
+    print(di.doctor_info('Fungal infection'))
+    print(di.precautions('Fungal infection'))
+    print(di.image_link('Fungal infection'))
+
