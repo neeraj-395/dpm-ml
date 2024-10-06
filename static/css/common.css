@@ -4,14 +4,16 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    height: 100vh;
     display: flex;
+    padding: 2rem;
     align-items: center;
     justify-content: center;
     background-color: whitesmoke !important;
 }
 
 .main-card {
+    max-height: 100%;
+    overflow-y: auto;
     width: 80vw;
     padding: 2%;
     border-radius: 30px;

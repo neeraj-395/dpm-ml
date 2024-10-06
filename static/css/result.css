@@ -2,11 +2,21 @@
 
 .img-card {
     float:right;
+    margin: 2rem;
     max-width: 20%;
-    padding: 2%;
     background-color: whitesmoke;
     border-radius: 30px;
     box-sizing: border-box;
+}
+
+.main-card{
+    margin: 1rem;
+    text-align: center;
+}
+
+p{
+    text-align: justify;
+    padding: 2rem;
 }
 
 .img-card img { height: 100%; width: 100%; border-radius: 30px; }
