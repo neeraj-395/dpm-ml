@@ -3,12 +3,16 @@ Script code to generate a barplot, counts the number of
 occurance of each prognosis.
 """
 
+import yaml
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Load the data from the correct file
-data = pd.read_csv('data/training.csv')
+with open('config.yaml', encoding='utf-8') as file:
+    config = yaml.safe_load(file)
+
+data = pd.read_csv(config['rawdata']['training'])
 
 # Count the occurrences of each unique 'prognosis'
 prognosis_counts = data['prognosis'].value_counts().reset_index()
