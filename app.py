@@ -18,10 +18,10 @@ def index_page():
     """Renders the homepage with a list of symptoms."""
     return render_template('index.html', symp_names=dpm.symptoms)
 
-@app.route("/predict", methods=['POST'])
+@app.route("/predict", methods=['GET'])
 def predict():
     """Handles disease prediction based on user symptoms."""
-    user_symp = request.form.get('symptoms', 'Unknown').split(',')
+    user_symp = request.args.get('symptoms', 'unknown').split(',')
     pred_index = dpm.predict(user_symp)
     pred_disease = dpm.diseases[pred_index] if pred_index else dpm.diseases[0]
 

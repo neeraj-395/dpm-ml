@@ -1,53 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const symptomSelect = document.getElementById('symptoms');
-    const dropdownContainer = document.createElement('div');
-    const selectedSymptomsContainer = document.createElement('div');
-    const dropdownMenu = document.createElement('div');
+    const symptomList = document.querySelector('.symptom-list');
+    const container = document.querySelector('.symptom-container');
+    const placeholder = document.getElementById('symptom-placeholder');
+    const symptoms = document.getElementById('symptoms')
+    const selectedSymptoms = new Set()
 
-    dropdownContainer.classList.add('dropdown-container');
-    selectedSymptomsContainer.classList.add('selected-symptoms-container');
-    dropdownMenu.classList.add('dropdown-menu');
-
-    dropdownContainer.append(selectedSymptomsContainer, dropdownMenu);
-    symptomSelect.parentElement.insertBefore(dropdownContainer, symptomSelect);
-    symptomSelect.style.display = 'none';
-
-    const createTag = (option) => {
-        const tag = document.createElement('span');
-        tag.className = 'tag';
-        tag.dataset.value = option.value;
-        tag.textContent = option.textContent + ' ';
-        const removeX = document.createElement('span');
-        removeX.className = 'remove-x';
-        removeX.textContent = 'x';
-        removeX.onclick = () => removeTag(tag, option);
-        tag.onclick = () => removeTag(tag, option);
-        tag.appendChild(removeX);
-        return tag;
+    const updateSymptoms = () => {
+        symptoms.setAttribute('value', Array.from(selectedSymptoms).join(','));
     };
 
-    const removeTag = (tag, option) => {
-        selectedSymptomsContainer.removeChild(tag);
-        option.disabled = false;
-    };
+    symptomList.addEventListener('click', (e) => {
+        if(e.target && e.target.classList.contains('dropdown-item')) {
+            const symptom = e.target.getAttribute('value');
 
-    Array.from(symptomSelect.options)
-        .filter(option => option.value !== "Add symptoms...")
-        .forEach(option => {
-            const optionItem = document.createElement('div');
-            optionItem.className = 'dropdown-option';
-            optionItem.textContent = option.textContent;
-            optionItem.onclick = () => {
-                if (![...selectedSymptomsContainer.children].some(tag => tag.dataset.value === option.value)) {
-                    selectedSymptomsContainer.appendChild(createTag(option));
-                    option.disabled = true;
+            if(container.childElementCount) {
+                placeholder.setAttribute('hidden','');
+            }
+
+            const symptomBtn = createTag(e.target.textContent, (tag) => {
+                tag.remove();
+                if(container.childElementCount === 1) {
+                    placeholder.removeAttribute('hidden');
                 }
-            };
-            dropdownMenu.appendChild(optionItem);
-        });
-
-    dropdownContainer.onclick = () => dropdownMenu.classList.toggle('show');
-    document.addEventListener('click', event => {
-        if (!dropdownContainer.contains(event.target)) dropdownMenu.classList.remove('show');
-    });
+                selectedSymptoms.delete(symptom);
+                updateSymptoms();
+                e.target.removeAttribute('hidden');
+            });
+            
+            container.appendChild(symptomBtn);
+            selectedSymptoms.add(symptom);
+            updateSymptoms();
+            e.target.setAttribute('hidden', '');
+        }
+    })
 });
+
+function createTag(name, handleCloseEvent) {
+    const tag = document.createElement('button');
+    tag.classList.add('btn', 'btn-primary', 'me-1', 'mb-1');
+    tag.style.borderRadius = '10px';
+    tag.textContent = name;
+
+    const closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '&Cross;';
+    closeBtn.style.opacity = '0.8';
+    closeBtn.style.marginLeft = '10px';
+    closeBtn.style.cursor = 'pointer';
+
+    closeBtn.addEventListener('click', () => handleCloseEvent(tag));
+    tag.appendChild(closeBtn);
+    return tag;
+}

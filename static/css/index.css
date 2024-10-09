@@ -51,7 +51,7 @@
     justify-content: center;
 }
 
-.input-section input, .symptom-select select {
+.input-section input, .symptom-container {
     padding: 12px;
     margin-bottom: 5%;
     font-size: 1.1rem;
@@ -62,3 +62,5 @@
 .input-section input, .symptom-select { width: 80%; }
 .symptom-select label { font-size: 1.1rem; margin-bottom: 2%; }
 .input-section button { font-size: 1.1rem; padding-inline:5%; }
+.symptom-container button { font-size: 1.05rem; padding-inline: 3%;}
+.symptom-list { overflow-y: auto; max-height: 150px; width: 100%;}
