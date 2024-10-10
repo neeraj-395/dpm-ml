@@ -1,17 +1,24 @@
 @import url('./common.css');
 
-.main-content { float: left; width: 70%; }
-
-.img-card {
-    float:right;
-    max-width: 20%;
-    border-radius: 30px;
-    box-sizing: border-box;
+#disease-section, #precaution-section {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-.disease-summary {
-    font-size: 1.15rem;
-    text-align: start;
-}
+.disease-info { float: left; width: 76%; }
+.disease-info p { font-size: 1.15rem; text-align: start; }
 
-.img-card img { height: 100%; width: 100%; border-radius: 30px; }
+.disease-img { float:right; max-width: 20%; }
+.disease-img img { width: 100%; border-radius: 30px; }
+
+
+.precaution-list { float: left; width: 48%; }
+.precaution-list ul > li { font-size: 1.15rem; text-align: start;}
+
+.piechart-img { float: right; max-width: 48%; }
+.piechart-img img { width: 60%; float: right; overflow: hidden; margin-right: -10%;}
+
+.doctor-info li > i { margin-right: 5px }
+.doctor-info {list-style-type: none; padding-left: 1%; font-size: 1.15rem;}

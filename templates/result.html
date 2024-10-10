@@ -11,13 +11,42 @@
 
 <body>
     <main class="main-card">
-        <div class="main-content">
-            <h1>{{d_name}}</h1>
-            <p class="disease-summary">{{d_summary}}</p>
-        </div>
-        <div class="img-card">
-            <img class="content-img" src="{{d_image_link}}">
-        </div>
+        <section id="disease-section">
+            <div class="disease-info">
+                <h1>{{d_name}}</h1>
+                <p>{{d_summary}}</p>
+            </div>
+            <div class="disease-img">
+                <img src="{{d_image_url}}" alt="An image presenting disease">
+            </div>
+        </section>
+        <section id="precaution-section">
+            <div class="precaution-list">
+                <h2>Precautions</h2>
+                <ul>
+                    {% for precaution in d_precautions %}
+                    <li>{{ precaution }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="piechart-img">
+                <img src="data:image/png;base64,{{ piechart_data }}" alt="A piechart of diseases">
+            </div>
+        </section>
+        <section id="doctorinfo-section">
+            <h3>Doctor details</h3>
+            <ul class="doctor-info">
+                <li><i class="fa-solid fa-user-doctor"></i>
+                    {{ d_doctor_info['doctor_name'] }}
+                </li>
+                <li><i class="fa-solid fa-dna"></i>
+                    {{ d_doctor_info['specialty'] }}
+                </li>
+                <li><i class="fa-solid fa-location-dot"></i>
+                    {{ d_doctor_info['hospital'] }}
+                </li>
+            </ul>
+        </section>
     </main>
 </body>
 

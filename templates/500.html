@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 Error</title>
+    <link rel="stylesheet" href="../static/css/500.css">
+</head>
+<body translate="no">
+    <main class="main-card" style="position: relative; height:70vh;">
+      <div class="error-500" data-text="Oh no! Our spaghetti code is not working properly. We will be back soon!">
+        <spaguetti>
+          <fork></fork>
+          <meat></meat>
+          <pasta></pasta>
+          <plate></plate>
+        </spaguetti>
+      </div>
+    </main>
+    <script>
+      const error = document.querySelector(".error-500");
+      let i = 0, data = "", text = error.getAttribute("data-text");
+      let typing = setInterval(() => {
+        if(i == text.length){
+          clearInterval(typing);
+        }else{
+          data += text[i];
+          document.querySelector(".error-500").setAttribute("data-text", data);
+          i++;
+        }
+      }, 100);
+    </script>
+</body>
+</html>

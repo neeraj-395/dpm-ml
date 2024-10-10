@@ -90,7 +90,7 @@ class DiseasePredictModel():
         x_pred = self.__symptoms_to_df(symptoms_names)
         dt_pred = self.__dt_model.predict(x_pred) # type:ignore
         rf_pred = self.__rf_model.predict(x_pred) # type:ignore
-        return stats.mode([dt_pred, rf_pred])[0][0]
+        return stats.mode([dt_pred, rf_pred], keepdims=False)[0][0]
 
     def predict_proba(self, symptoms_names: list[str]) -> list[float] | None:
         """
@@ -106,4 +106,4 @@ class DiseasePredictModel():
 
 if __name__ == "__main__":
     dpm = DiseasePredictModel()
-    print(dpm.predict_proba(['itching', 'skin_rash', 'chills']))
+    print(dpm.predict(['itching', 'skin_rash', 'chills']))

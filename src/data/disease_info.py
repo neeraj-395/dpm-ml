@@ -43,7 +43,7 @@ class DiseaseInfo():
         return self.__safe_lookup(disease_name, 'wiki_img')
 
     def doctor_info(self, disease_name) -> dict[str, str | None]:
-        """Return a dictionary with doctor info (name, branch, hospital) for the given disease."""
+        """Return a dict with doctor info (doctor_name, specialty, hospital) of given disease."""
         keys = ['doctor_name', 'hospital', 'specialty']
         return dict(zip(keys, [self.__safe_lookup(disease_name, x) for x in keys]))
 
