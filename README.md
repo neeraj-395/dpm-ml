@@ -44,9 +44,8 @@ This project uses machine learning models (Decision Tree and Random Forest) to p
 ## Project Demo
 
 Once the application is running, you can enter symptoms on the homepage and receive a prediction for the most likely disease. The result page will show:
-- Predicted disease
-- Relevant information about the disease
-- Visualizations such as bar plots and heatmaps displaying key data points
+
+https://github.com/user-attachments/assets/f77628b8-ae58-4661-ba9d-7dd31b711e89
 
 ## Project Directory Structure
 
