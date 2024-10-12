@@ -18,7 +18,6 @@ This project uses machine learning models (Decision Tree and Random Forest) to p
 2. **Create a virtual environment**  
    Navigate to the project root directory and create a virtual environment using `make`:
    ```bash
-   cd disease-prediction
    make venv
    ```
    Alternatively, you can create a virtual environment manually:
